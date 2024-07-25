@@ -1,3 +1,5 @@
+var Two = require('two');
+
 var two = new Two ({
     type: Two.types.canvas,
     fullscreen: true,
@@ -53,3 +55,31 @@ for (let j = 0; j < 10; j++) {
 //cached variable that go in the nimation loop
 
 var a = new Two.Vector(), b = new Two.Vector();
+var velocity = 0.0125;
+
+two.bind('update', function(frameCount, timeDelta){
+    if (!timeDelta) {
+        return;
+    }
+
+    for (var i = 0; i < amount; i++) {
+
+        //animate the road
+        var v = points[i];
+        var pct = i / (amount - 1);
+        var offset = pct * Math.PI * 2;
+        var theta = offset + frameCount / 20;
+        v.x = two.width / 20 * Math.cos(theta);
+
+        var length = dashes.length;
+
+        if (i > length - 1) {
+            continue;
+        }
+
+        //animate the dashes
+
+        var dash = dashes[i];
+    }
+}) 
+
