@@ -52,4 +52,4 @@ for (let j = 0; j < 10; j++) {
 
 //cached variable that go in the nimation loop
 
-var a = new Two
+var a = new Two.Vector(), b = new Two.Vector();
