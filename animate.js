@@ -1,4 +1,4 @@
-var Two = require('two');
+//import Two from 'https://cdn.skypack.dev/two.js@latest';
 
 var two = new Two ({
     type: Two.types.canvas,
@@ -80,6 +80,39 @@ two.bind('update', function(frameCount, timeDelta){
         //animate the dashes
 
         var dash = dashes[i];
+        //assign calculation of the vector on the road to 'a'
+        road.getPointAt(dash.pct, a);
+        //get an arbitrary vector right behind 'a' in order to get the angle for the rotation of the dash
+        road.getPointAt(dash.pct - 0.01, b);
+        dash.translation.copy(a).addSelf(road.translation);
+        dash.rotation = Two.Utils.angleBetween(a, b) + Math.PI / 2;
+
+        dash.pct = mod(dash.pct + velocity, 1);
     }
-}) 
+});
+
+//add mouse interaction
+window.addEventListener('mousemove', function(e) {
+    var pct = (e.clientY / window.innerHeight - 0.5) * 2;
+    velocity = pct * 0.3;
+}, false);
+
+window.addEventListener('touchmove', function(e) {
+    var touch = e.changedTouches[1];
+
+    if (!touch){
+        return;
+    }
+
+    var pct = (e.clientY / window.innerHeight - 0.5) * 2;
+    velocity = pct * 0.3; 
+});
+
+function mod(v, l) {
+    while (v < 0) {
+        v += l;
+    }
+
+    return v%l;
+}
 
