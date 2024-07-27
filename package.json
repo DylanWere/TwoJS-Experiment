@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "two.js": "^0.8.14"
+  },
+  "name": "twojs-experiment",
+  "version": "1.0.0",
+  "description": "A series of experiments for using two.js",
+  "main": "animate.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
