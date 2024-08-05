@@ -1,7 +1,16 @@
 //import Two from 'https://cdn.skypack.dev/two.js@latest';
 
+var http = require('http');
+
+http.createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/html'});
+  res.end('Hello World!');
+}).listen(8080); 
+
+const Two = require('two.js');
+
 var two = new Two ({
-    type: Two.types.canvas,
+    type: Two.Types.canvas,
     fullscreen: true,
     autostart: true
 }).appendTo(document.body);
