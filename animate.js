@@ -1,15 +1,5 @@
-//import Two from 'https://cdn.skypack.dev/two.js@latest';
 
-var http = require('http');
-
-http.createServer(function (req, res) {
-  res.writeHead(200, {'Content-Type': 'text/html'});
-  res.end('Hello World!');
-}).listen(8080); 
-
-const Two = require('two.js');
-
-var two = new Two ({
+var two = new Two({
     type: Two.Types.canvas,
     fullscreen: true,
     autostart: true
@@ -94,7 +84,7 @@ two.bind('update', function(frameCount, timeDelta){
         //get an arbitrary vector right behind 'a' in order to get the angle for the rotation of the dash
         road.getPointAt(dash.pct - 0.01, b);
         dash.translation.copy(a).addSelf(road.translation);
-        dash.rotation = Two.Utils.angleBetween(a, b) + Math.PI / 2;
+        dash.rotation = Two.Vector.angleBetween(a, b) + Math.PI / 2;
 
         dash.pct = mod(dash.pct + velocity, 1);
     }
