@@ -1,4 +1,3 @@
-
 var two = new Two({
     type: Two.Types.canvas,
     fullscreen: true,
@@ -37,7 +36,7 @@ var dashes = [];
 
 for (let j = 0; j < 10; j++) {
     
-    var gutter = -10;
+    var gutter = -30;
     var length = two.height / (amount + gutter);
     var dash = two.makeLine((0, -length, 0, length));
 
@@ -84,7 +83,7 @@ two.bind('update', function(frameCount, timeDelta){
         //get an arbitrary vector right behind 'a' in order to get the angle for the rotation of the dash
         road.getPointAt(dash.pct - 0.01, b);
         dash.translation.copy(a).addSelf(road.translation);
-        dash.rotation = Two.Vector.angleBetween(a, b) + Math.PI / 2;
+        dash.rotation = Two.Vector.angleBetween(a, b);
 
         dash.pct = mod(dash.pct + velocity, 1);
     }
@@ -93,7 +92,7 @@ two.bind('update', function(frameCount, timeDelta){
 //add mouse interaction
 window.addEventListener('mousemove', function(e) {
     var pct = (e.clientY / window.innerHeight - 0.5) * 2;
-    velocity = pct * 0.3;
+    velocity = pct * 0.03;
 }, false);
 
 window.addEventListener('touchmove', function(e) {
