@@ -9,6 +9,7 @@ var two = new Two({
 
 var amount = 32;
 var points = [];
+var mouseX = 0;
 
 for (let i = 0; i < amount; i++) {
 
@@ -91,9 +92,13 @@ two.bind('update', function(frameCount, timeDelta){
 });
 
 //add mouse interaction
+var mouseX = 0;
 window.addEventListener('mousemove', function(e) {
     var pct = (e.clientY / window.innerHeight - 0.5) * 2;
     velocity = pct * 0.3;
+
+    mouseX = e.clientX;
+
 }, false);
 
 window.addEventListener('touchmove', function(e) {
