@@ -14,7 +14,7 @@ for (let i = 0; i < amount; i++) {
     var pct = i / (amount - 1);
     var theta = Math.PI * 2 * pct;
     var x = two.width / 20 * Math.cos(theta);
-    var y = pct * two.height * 2 - two.height * 0.5;
+    var y = pct * two.height * 1.5;
 
     points.push(new Two.Anchor(x, y));
     
@@ -36,7 +36,7 @@ var dashes = [];
 
 for (let j = 0; j < 10; j++) {
     
-    var gutter = -30;
+    var gutter = -10;
     var length = two.height / (amount + gutter);
     var dash = two.makeLine((0, -length, 0, length));
 
