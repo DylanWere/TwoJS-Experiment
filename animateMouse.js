@@ -67,13 +67,13 @@ two.bind('update', function(frameCount, timeDelta){
 
         //animate the road
 
-       
-        var v = points[amount - i - 1];
-        var prev = points[amount - i - 2];
+        var topVal = amount-i; 
+        var v = points[topVal - 1];
+        var prev = points[topVal - 2];
         
-        if (amount - i - 1 == 0) {
+        if (topVal - 1 == 0) {
             //smoothing - get the new mouse x and average it with the last
-            v.x = ((mouseX - two.width / 2) + points[amount - i].x + points[amount - i + 1].x)/3;
+            v.x = ((mouseX - two.width / 2) + points[topVal].x + points[topVal + 1].x)/3;
         } else if (i < amount-1) {
             v.x = prev.x;
         }
