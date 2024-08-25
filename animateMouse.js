@@ -14,9 +14,8 @@ var mouseX = 0;
 for (let i = 0; i < amount; i++) {
 
     var pct = i / (amount - 1);
-    var theta = Math.PI * 2 * pct;
-    var x = two.width / 20 * Math.cos(theta);
-    var y = pct * two.height * 2 - two.height * 0.5;
+    var x = mouseX;
+    var y = pct * two.height * 1.5;
 
     points.push(new Two.Anchor(x, y));
     
@@ -62,17 +61,25 @@ two.bind('update', function(frameCount, timeDelta){
         return;
     }
 
+    
+
     for (var i = 0; i < amount; i++) {
 
         //animate the road
 
-        /*
-        var v = points[i];
-        var pct = i / (amount - 1);
-        var offset = pct * Math.PI * 2;
-        var theta = offset + frameCount / 20;
-        */
-        v.x = mouseX;
+       
+        var v = points[amount - i - 1];
+        var prev = points[amount - i - 2];
+        
+        if (amount - i - 1 == 0) {
+            //smoothing - get the new mouse x and average it with the last
+            v.x = ((mouseX - two.width / 2) + points[amount - i].x + points[amount - i + 1].x)/3;
+        } else if (i < amount-1) {
+            v.x = prev.x;
+        }
+
+       
+        
 
         var length = dashes.length;
 
@@ -98,7 +105,7 @@ two.bind('update', function(frameCount, timeDelta){
 var mouseX = 0;
 window.addEventListener('mousemove', function(e) {
     var pct = (e.clientY / window.innerHeight - 0.5) * 2;
-    velocity = pct * 0.3;
+    velocity = pct * 0.07;
 
     mouseX = e.clientX;
 
