@@ -65,11 +65,14 @@ two.bind('update', function(frameCount, timeDelta){
     for (var i = 0; i < amount; i++) {
 
         //animate the road
+
+        /*
         var v = points[i];
         var pct = i / (amount - 1);
         var offset = pct * Math.PI * 2;
         var theta = offset + frameCount / 20;
-        v.x = two.width / 20 * Math.cos(theta);
+        */
+        v.x = mouseX;
 
         var length = dashes.length;
 
