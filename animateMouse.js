@@ -88,7 +88,7 @@ two.bind('update', function(frameCount, timeDelta){
         }
 
         //animate the dashes
-
+        //this can remain the same
         var dash = dashes[i];
         //assign calculation of the vector on the road to 'a'
         road.getPointAt(dash.pct, a);
@@ -104,23 +104,11 @@ two.bind('update', function(frameCount, timeDelta){
 //add mouse interaction
 var mouseX = 0;
 window.addEventListener('mousemove', function(e) {
-    var pct = (e.clientY / window.innerHeight - 0.5) * 2;
-    velocity = pct * 0.07;
 
     mouseX = e.clientX;
 
 }, false);
 
-window.addEventListener('touchmove', function(e) {
-    var touch = e.changedTouches[1];
-
-    if (!touch){
-        return;
-    }
-
-    var pct = (e.clientY / window.innerHeight - 0.5) * 2;
-    velocity = pct * 0.3; 
-});
 
 function mod(v, l) {
     while (v < 0) {
