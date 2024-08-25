@@ -25,5 +25,5 @@ jobs:
         uses: super-linter/super-linter@v7.0.0 # x-release-please-version
         env:
           DEFAULT_BRANCH: main
-          GITHUB_TOKEN: ${{ sectrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
