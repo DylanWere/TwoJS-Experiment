@@ -1,4 +1,4 @@
-var two = new Two({
+const two = new Two({
     type: Two.Types.canvas,
     fullscreen: true,
     autostart: true
