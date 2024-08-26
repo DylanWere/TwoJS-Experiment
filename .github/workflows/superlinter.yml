@@ -7,7 +7,7 @@ jobs:
     name: lint code base
     runs-on: ubuntu-latest
 
-    permissions: read-all, write
+    permissions: read-all
       
     steps:
       - name: Checkout Code
